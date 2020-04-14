@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static com.meesho.zookeeper.constant.Constants.GET_USER_DETAILS;
+import static com.meesho.zookeeper.constant.Constants.*;
 
 @Service
 public class DynamicConfigService {
@@ -26,6 +26,12 @@ public class DynamicConfigService {
 
     public UserDetails getUserDetailsUsingBeans() {
         UserDetails userDetailsBean = (UserDetails) BeanUtil.getBean(GET_USER_DETAILS);
+        UserDetails userDetails = new UserDetails(userDetailsBean.getName(), userDetailsBean.getAddress());
+        return userDetails;
+    }
+
+    public UserDetails getUserDetailsUsingBeansHierarchical() {
+        UserDetails userDetailsBean = (UserDetails) BeanUtil.getBean(GET_USER_DETAILS_HIERARCHICAL);
         UserDetails userDetails = new UserDetails(userDetailsBean.getName(), userDetailsBean.getAddress());
         return userDetails;
     }

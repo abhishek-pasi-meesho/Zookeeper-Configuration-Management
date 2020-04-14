@@ -29,4 +29,10 @@ public class DynamicConfigController {
         return new ResponseEntity<>(dynamicConfigService.getUserDetailsUsingBeans(), HttpStatus.OK);
     }
 
+    @ResponseBody
+    @RequestMapping(method= RequestMethod.GET, value="/beans/hierarchical/get")
+    public ResponseEntity<UserDetails> getUserDetailsUsingBeansHierarchical() {
+        return new ResponseEntity<>(dynamicConfigService.getUserDetailsUsingBeansHierarchical(), HttpStatus.OK);
+    }
+
 }
